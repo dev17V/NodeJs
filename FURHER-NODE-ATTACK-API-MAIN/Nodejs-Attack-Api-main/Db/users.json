@@ -1,0 +1,18 @@
+{
+    "users": {
+        "root": {
+            "password": "root",
+            "cons": 1,
+            "time": 10,
+            "hwid": "test",
+            "ip": "::ffff:127.0.0.1"
+        },
+        "root1": {
+            "password": "root",
+            "cons": 1,
+            "time": 10,
+            "hwid": "test",
+            "ip": "::1"
+        }
+    }
+}
