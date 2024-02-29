@@ -95,7 +95,7 @@ function handleCommand(command) {
         rl.question('TARGET: ', (target) => {
           rl.question('PORT: ', (port) => {
             rl.question('TIME: ', (time) => {
-              axios.get(`http://${API_SERVER}:3000/api/fear/?key=POBlKStf3tTRomd&target=${target}&port=${port}&time=${time}&method=${command}`)
+              axios.get(`http://${API_SERVER}:3000/api/fear/?key=${token}&target=${target}&port=${port}&time=${time}&method=${command}`)
                 .then(response => {
                   console.log(`
                   ╔══════════════════════╗
