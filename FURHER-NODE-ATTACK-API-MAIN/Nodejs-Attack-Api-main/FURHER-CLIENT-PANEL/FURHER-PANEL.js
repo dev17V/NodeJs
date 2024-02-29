@@ -8,10 +8,6 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-let validCommand1 = '.cf';
-let validCommand2 = '.tcp';
-let validCommand3 = '.udp';
-
 let validCommands = ['.cf', '.tcp', '.udp', 'methods', 'logout', 'info', 'tos', 'iplookup', 'help', '?'];
 
 let methodsBanner = `
