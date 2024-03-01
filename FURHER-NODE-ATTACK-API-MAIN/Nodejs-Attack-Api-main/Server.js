@@ -72,7 +72,6 @@ app.get('/auth', (req, res) => {
 
     const isAuthenticated = db.AuthUser(username, password, hwid, ip);
 
-    console.log(username, password, hwid, ip);
     if (!isAuthenticated) {
         return res.status(401).json({ error: 'Invalid credentials' });
     }
@@ -115,9 +114,6 @@ app.get('/api/fear', (req, res) => {
     }
 
     const result = AttackManager.Attack(key, target, port, time, method);
-
-    const logMessage = `[${new Date().toLocaleString()}] User ${authToken.username} initiated an attack on ${target}:${port} for ${time} seconds using method ${method}`;
-    console.log(logMessage);
 
     res.status(200).send(`{"success": \"${result}\"}`);
 });
