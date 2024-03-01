@@ -5,14 +5,14 @@
             "cons": 1,
             "time": 10,
             "hwid": "test",
-            "ip": "::ffff:127.0.0.1"
+            "ip": "THE-FIRST-USERS-IP"
         },
         "YOUR-SECOND-USER": {
             "password": "root",
             "cons": 1,
             "time": 10,
             "hwid": "test",
-            "ip": "::1"
+            "ip": "THE-SECOND-USERS-IP"
         }
     }
 }
