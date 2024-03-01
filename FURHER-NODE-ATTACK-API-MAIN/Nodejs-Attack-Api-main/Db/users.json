@@ -1,13 +1,13 @@
 {
     "users": {
-        "root": {
+        "YOUR-FIRST-USER": {
             "password": "root",
             "cons": 1,
             "time": 10,
             "hwid": "test",
             "ip": "::ffff:127.0.0.1"
         },
-        "root1": {
+        "YOUR-SECOND-USER": {
             "password": "root",
             "cons": 1,
             "time": 10,
