@@ -1,17 +1,17 @@
 {
     "users": {
-        "YOUR-FIRST-USER": {
-            "password": "root",
+        "YOURFIRSTUSER": {
+            "password": "PASSWORD-GOES-HERE",
             "cons": 1,
             "time": 10,
-            "hwid": "test",
+            "hwid": "74838994948724899943587481",
             "ip": "THE-FIRST-USERS-IP"
         },
-        "YOUR-SECOND-USER": {
-            "password": "root",
+        "YOURSECONDUSER": {
+            "password": "PASSWORD-GOES-HERE",
             "cons": 1,
             "time": 10,
-            "hwid": "test",
+            "hwid": "74838994948724899943587481",
             "ip": "THE-SECOND-USERS-IP"
         }
     }
